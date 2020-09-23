@@ -1,0 +1,40 @@
+<div class="list-group">
+    <!--
+      Sous Bloc
+    -->
+
+    <div ng-repeat="sous_bloc in bloc.sous_blocs">
+        <a href="#" class="list-group-item list-group-item-action sous_bloc"
+        >
+            {{sous_bloc.name}}
+
+        </a>
+        <table class="table table-hover">
+            <thead>
+            <i style=" padding-left: 5px;float: right; cursor: pointer;margin-top:4px;
+                             font-size: initial;color:#008cba" class="fas fa-plus-circle fa-lg"  ></i>
+            </thead>
+            <tbody>
+
+            <tr  class="indicateur_for_searching sb" ng-repeat="indicateur in sous_bloc.indicateurs track by $index">
+                <th>{{indicateur.name | limitTo:20}}</td>
+                <th>{{indicateur.code_datalib | limitTo:20}}</td>
+                <td>{{indicateur.xpath | limitTo:10}}</td>
+                <td>
+                    <i style=" padding-left: 5px; cursor: pointer;margin-top:4px;   font-size: 10px;color:#008cba"
+                       class="fas fa-edit fa-lg"
+                       ng-click="editIndicateur(indicateur,sous_bloc,$index)"
+                    ></i>
+                    <i style=" padding-left: 5px; cursor: pointer;margin-top:4px;   font-size: 10px;color:#F04124"
+                       class="fas fa-trash fa-lg"
+                       ng-click="deleteIndicateur(indicateur,sous_bloc,$index)"
+
+                    ></i>
+                </td>
+            </tr>
+
+
+            </tbody></table>
+    </div>
+
+</div>

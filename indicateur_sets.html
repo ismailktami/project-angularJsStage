@@ -1,0 +1,60 @@
+<div>
+    <div class="card" ng-repeat="indicateur_set in bloc.indicateurSets track by $index">
+        <div class="card-header IndicateurSet" id="headingOne" >
+            <h4 class="mb-0" style="float: left;">
+                <button
+                        id="collapse" class="btn btn-link collapse_indicateurSet"  style="font-size: 11;
+                                color: black;
+                                font-weight: bold;
+                              "
+                        data-toggle="collapse"
+                        data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    {{indicateur_set.name}}
+                    <i style=" padding-left: 5px;color:black" id="collapse-up" class="fas fa-angle-up fa-lg"
+                    ></i>
+                </button>
+
+                </h5>
+                <i style=" float:right;padding-top:10px;margin-right: 10px;color:red;font-size: 15px;cursor: pointer;"
+                   id="collapse-up" class="fas fa-trash"
+                   ng-click="deleteIndicateurSet(indicateur_set,bloc,$index)"
+                ></i>
+
+                <i style=" float:right;padding-top:10px;margin-right: 10px;color:#008cba;font-size: 15px;cursor: pointer;"
+                   id="collapse-up" class="fas fa-edit"
+                   ng-click="editIndicateurSet(indicateur_set,bloc,$index)"
+                ></i>
+        </div>
+
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" >
+            <div class="card-body">
+
+                <table class="table table-hover">
+                    <thead>
+                    <i style=" padding-left: 5px;float: right; cursor: pointer;margin-top:4px;   font-size: initial;color:#008cba" class="fas fa-plus-circle fa-lg"  ></i>
+                    </thead>
+                    <tbody>
+                    <tr class="indicateur_for_searching" ng-repeat="ind in indicateur_set.indicateurSimples track by $index">
+                        <th scope="row">{{ind.name | limitTo:20 }}</th>
+                        <td>{{ind.code_datalib | limitTo:20}}</td>
+                        <td>{{ind.xpath | limitTo:10}}</td>
+                        <td>
+                            <i style=" padding-left: 5px; cursor: pointer;margin-top:4px;
+                                         font-size: 10px;color:#008cba" class="fas fa-edit fa-lg"
+                               ng-click="editIndicateur(ind,indicateur_set,$index)"
+
+                            ></i>
+                            <i style=" padding-left: 5px; cursor: pointer;margin-top:4px;
+
+                                        font-size: 10px;color:#F04124"
+                               ng-click="deleteIndicateur(indicateur,indicateur_set,$index)"
+                               class="fas fa-trash fa-lg"  ></i>
+                        </td>
+                    </tr>
+
+                    </tbody></table>
+
+            </div>
+        </div>
+    </div>
+</div>

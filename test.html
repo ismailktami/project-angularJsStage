@@ -1,0 +1,41 @@
+<html ng-app="test-model">
+    <head>
+        <script src="resources/angularJs/angularJs.js" type="text/javascript"></script>
+        <script src="resources/angularJs/main.js"></script>
+    
+    </head>
+
+
+    <body  ng-controller="testController">
+        <ul>
+             <li ng-repeat="bloc in blocs track by $index">
+                {{bloc.name}}
+                <button ng-click="indedxx($index)">bloc</button>
+                <div ng-repeat="indicateur in bloc.inds" >
+                <p>
+                    {{indicateur.name}}
+               
+                </p>
+                <button ng-click="afficherIndicateur(indicateur)">afficher indicateur</button>
+                <button ng-click="editIndicateur(indicateur,bloc.id)">Editer  indicateur</button>
+                <button ng-click="remove(indicateur,bloc.id,$index)">Remvoe  indicateur</button>
+
+                <br>
+            </div>
+            </li>    
+    </ul>
+    <div ng-if="indicateur_selected">
+        <form >
+            <input type="text" ng-model="indicateur_selected.name" value="{{indicateur_selected.name}}"/>
+            <input type="text" ng-model="indicateur_selected.code_datalib" value="{{indicateur_selected.code_datalib}}"/>
+            <button ng-click="edit()">edit</button>
+        </form>
+    </div>
+   
+    
+    <div ng-if="indicateur_removed" >
+        <button  ng-click="cancel_remove()">Cancel</button>
+    </div>
+
+    </body>
+</html>

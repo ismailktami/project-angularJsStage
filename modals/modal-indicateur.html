@@ -1,0 +1,209 @@
+
+          <div class="modal " id="exampleModal" >
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">{{parent.name}}  / {{indicateur.code_datalib}}         
+                                        </h5>
+                
+                </div>
+                <div class="modal-body">
+
+                  <form class="needs-validation" novalidate="">
+                    <div class="row">
+                    
+                      <div class="col-md-3 mb-3">
+                        <label for="lastName">Nom</label>
+                        <input type="text" class="form-control" 
+                        
+                        placeholder="" ng-value="indicateur.name"
+                        ng-model="indicateur_to_edit.name"
+                        required="">
+                       
+                      </div>
+                      <div class="invalid-feedback">
+                        Valid Nom is required.
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label for="lastName">Code datalib</label>
+                        <input type="text" class="form-control" id="lastName"
+                          value="{{indicateur.code_datalib}}"
+                        placeholder="" 
+                        ng-model="indicateur_to_edit.code_datalib"
+                        required="">
+                        <div class="invalid-feedback">
+                          Valid  Code dataib is required.
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="mb-2">
+
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <label for="firstName">Xpath</label>
+                        <input type="text" class="form-control" id="firstName" placeholder=""
+                         ng-value="indicateur.xpath"
+                         ng-model="indicateur_to_edit.xpath"
+                         required="">
+                         <div class="invalid-feedback">
+                          Valid Xpath is required.
+                        </div>
+                      </div>
+                      
+                      <div class="col-md-3 mb-3">
+                        <label for="lastName">Selector key css</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+                        <div class="invalid-feedback">
+                          Valid last name is required.
+                        </div>
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label for="lastName">Selector value css</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+                        <div class="invalid-feedback">
+                          Valid last name is required.
+                        </div>
+                      </div>
+                    </div>
+        
+                  
+                    <hr class="mb-2">
+
+
+
+
+ 
+
+
+                   <div class="col-md-12" style="padding-left: 0px;"> 
+                    <div class="card  mb-3">
+                      <div class="card-header">Regle d'affichage</div>
+                      <div class="card-body" style="padding-top: 15px;padding-bottom: 10px;">
+                        <h4 class="card-title">Configuer la règle d'affichage</h4>
+
+                          <div class="row">
+                            <div class="col-md-4 mb-3">
+                              <label for="code_regle">Code Datalib</label>
+                              <input type="text" class="form-control" name="code_regle" placeholder=""
+                               ng-value="indicateur.regle.code_datalib"
+                               ng-model="indicateur_to_edit.regle.code_datalib"
+                               required="">
+                               <div class="invalid-feedback">
+                                Valid Regle code datalib is required.
+                              </div>
+                            </div>
+                            <div class="col-md-4 mb-3" >
+                              <label for="value">Value à respecter</label>
+                              <input type="text" class="form-control"
+                              name="vamue"
+                              ng-model="indicateur_to_edit.regle.value"
+                               placeholder="" 
+                               
+                               ng-value="indicateur.regle.value"
+
+                               required="">
+                              <div class="invalid-feedback">
+                                Valid Value à respecter is required.
+                              </div>
+                            </div>
+                      
+
+                            <div  class="col-md-4" style="align-self:flex-end">
+                              <button type="button" style="width: 150px;margin-right: 10px;" 
+                               ng-click="addRegle()"
+                               class="btn btn-primary">Ajouter</button>
+                              </div>
+
+
+                          </div>
+
+                      </div>
+                    </div>
+                   </div>
+
+                    <hr class="mb-3">
+      
+                    <div class="col-md-12" style="padding-left: 0px;" > 
+                      <div class="card  mb-3">
+                        <div class="card-header">Clients</div>
+                        <div class="card-body" style="padding-top: 15px;padding-bottom: 10px;">  
+                           
+                    <div class="row">
+                      <div class="col-md-4 ">
+                        <div class="form-group">
+                          <select class="custom-select" ng-model="techno">
+                            <option value="FTTH" selected="" >FTTH</option>
+                            <option value="ADSL">ADSL</option>
+                            <option value="VDSL">VDSL</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-4" >
+
+                      <div class="form-group">
+                        <select class="custom-select" ng-model="offre">
+                          <option value="3P" selected="">3P</option>
+                          <option value="2P">2P</option>
+                          <option value="1P">1P</option>
+                        </select>
+                      </div>
+                      </div>
+
+                      <div class="col-md-4">
+                        <button type="button" style="width: 150px;margin-right: 10px;" 
+                         ng-disabled="offre=='' || techno=='' || ContainsClient(techno,offre)"
+                         class="btn btn-primary" ng-click="addClient(techno,offre)">Ajouter</button>
+                        </div>
+
+
+                        <div class="col-md-8"  style="  overflow: auto;max-height: 150px;">
+
+                          <table class="table">
+                            <thead>
+                              <tr >
+                                <th scope="row">Technologie</th>
+                                <th scope="row">Offre</th>
+                                <th scope="row">Delete from client</th>
+                              </tr>
+                              </thead>
+                            <tbody>
+                              <tr ng-repeat="client in indicateur_to_edit.clients track by $index" >
+                                <th scope="row">{{client.technologie}}</th>
+                              <th scope="row">{{client.type_of_abonnement}}</th>
+                               <th scope="row">
+                               <i class="fas fa-trash" style=" padding-left: 15px; cursor: pointer;margin-top:4px;
+                                  font-size: 10px;color:#F04124"
+                                  ng-click="deletecClient($index)"
+                                  
+                                  ></i>
+                                  </th>
+                              </tr>
+                            
+                        </tbody></table>
+                        </div>
+                        </div>
+                      </div>
+                     </div>
+                              </div>
+                                  </form>
+                </div>
+                <div class="modal-footer">
+                <div class="row">
+                  <div ng-if="valider" style="margin-right: 10px;" class="spinner-border text-primary"></div>
+
+                  <div ng-if="!valider">
+                    <button type="button" style="width: 150px;margin-right: 10px;"  ng-click="modifier()"
+                     class="btn btn-primary">Valider</button>
+                  </div>
+                  <div>
+                    <button type="button" style="width: 150px;"class="btn btn-danger" data-dismiss="modal">
+                    Annuler
+                    </button>
+                  </div>
+                            </div>
+                </div>
+              </div>
+
+            </div>
+              
+            </div>

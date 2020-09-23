@@ -1,0 +1,53 @@
+<div ng-controller="homeController"> 
+<div style="width: 100%;">
+    <div class="jumbotron" style="background-color:#eeeeee40 !important;" >
+        <h1 class="display-3">Tech360-TNR </h1>
+        <p class="lead"></p>
+        <hr class="my-4">
+        <p>
+            Configurer les modèles d'automatisation sur l'application TECH360.
+
+        </p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" style="color: white;"
+               data-toggle="modal" data-target="#exampleModal"
+               role="button">Lancer la configuration</a>
+        </p>
+    </div>
+
+
+
+    <div class="modal "  data-backdrop="false" id="exampleModal">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Choisir le client à configurer</h5>
+
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <select class="custom-select" ng-model="techno">
+                            <option value="FTTH"  selected="">FTTH</option>
+                            <option value="ADSL">ADSL</option>
+                            <option value="VDSL">VDSL</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <select class="custom-select" ng-model="offre">
+                            <option value="3P" selected="">3P</option>
+                            <option value="2P">2P</option>
+                            <option value="1P">1P</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-primary" ng-click="config()" role="button">Start</a>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+
+
+        </div></div>

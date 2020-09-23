@@ -1,0 +1,7 @@
+{
+    "git.ignoreLimitWarning": true,
+    "code-runner.executorMap": {
+        "html":"chrome"
+
+    }
+}
