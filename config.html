@@ -206,7 +206,16 @@ div.card-header> h5 > button{
         
         </li>
           </ul>
-          
+          <div  ng-if="!sous_onglet_selected.blocs" class="row" style="margin-top: 80px;" >
+            <div class="col-sm" style="text-align: center;">
+              
+                <i class="far fa-frown fa-w-16 fa-3x">
+                  <br/>
+                  No Bloc is Avalaible
+                </i>
+              
+            </div>
+          </div>
       <div ng-if="sous_onglet_selected.blocs" class="bloc-controller" ng-controller="blocController">
 
           <div class="row" style="margin-left: 15px;margin-right: 15px;">
@@ -243,6 +252,7 @@ div.card-header> h5 > button{
                       -->
 
                       <div>
+                      
                         <div  ng-if="bloc.indicateurSets.length > 0 || bloc.indicateurs.length > 0" class="card" style="margin-top: 5px;" >
                           <div class="card-header Indicateurs" id="headingOne2-{{bloc.id}}" >
                             <h5 class="mb-0" style="float: left;">

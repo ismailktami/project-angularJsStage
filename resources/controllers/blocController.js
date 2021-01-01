@@ -56,29 +56,14 @@ app.controller("blocController",function($scope,$rootScope,$http){
             var ss=myVal || '';
             if(msg.innerText.includes(ss)){
                 if(ss!==""){
-                    if($(msg).attr('class').includes("sb"))
-                         $(msg.parentElement.parentElement.parentElement.parentElement).children().first().css('border','2px solid blue') ;               
-                    else
-                    $(msg.parentElement.parentElement.parentElement.parentElement.parentElement).children().first().css('border','2px solid blue') ;               
-
                  $(msg).css('background-color','#f4d977') ;
                   }  
                 else{
-                $(msg.parentElement.parentElement.parentElement.parentElement.parentElement).children().first().css('border','') ;
-                $(msg.parentElement.parentElement.parentElement.parentElement).children().first().css('border','') ;
-
                 $(msg).css('background-color','white') ;            
-                  }
-
                 $(msg).show();
-
                 }
-
+            }
             else{
-                $(msg).hide();
-                $(msg.parentElement.parentElement.parentElement.parentElement.parentElement).children().first().css('border','');
-                $(msg.parentElement.parentElement.parentElement.parentElement).children().first().css('border','');
-
                 $(msg).css('background-color','white') ;
             }
         })
